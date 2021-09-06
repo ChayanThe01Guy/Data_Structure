@@ -40,6 +40,10 @@ void main () {
             }  
             case 4:   
             {  
+                free (head);
+		display();
+		head = NULL;
+		display();
                 printf("Exiting....");  
                 break;   
             }  
