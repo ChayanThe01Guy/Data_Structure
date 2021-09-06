@@ -18,7 +18,7 @@ void main () {
     printf("\n*********Stack operations using linked list*********\n");  
     printf("\n----------------------------------------------\n");  
     while(choice != 4) {
-		printf("\n\nChose one from the below options...\n");  
+	printf("\n\nChose one from the below options...\n");  
         printf("\n1.Push\n2.Pop\n3.Show\n4.Exit");  
         printf("\n Enter your choice \n");        
         scanf("%d",&choice);  
@@ -61,7 +61,7 @@ void push ()
 	
 		printf ("Enter the number of value you want to store\n");
 		scanf("%d",&x);
-	for (int i = 0; i < x; i++) {
+		for (int i = 0; i < x; i++) {
 		struct node *ptr = (struct node*) malloc (sizeof (struct node));
 	
 		if(ptr == NULL) {  
@@ -95,8 +95,9 @@ void pop () {
 	printf ("Enter the number stack you want to delete\n");
 	scanf("%d",&x);
 	
-	for (int i = 0; i < x; i++) {
-		if (head == NULL) {  
+	if (x <= count) {
+		for (int i = 0; i < x; i++) {
+			if (head == NULL) {  
 			printf ("Stack Is Empty\n");  
 		}  
 		else {  
@@ -105,9 +106,13 @@ void pop () {
 			head = head -> next;  
 			free (ptr);
 			printf("POPPED item is = %d\n", item);
-    	}
-    	count--;
-    }
+    		}
+    		count--;
+		}
+	}
+	else {
+		printf ("You Enter morethan %d\n", count);
+	}
 } 
 
 
