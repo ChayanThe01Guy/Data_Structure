@@ -25,6 +25,10 @@ void main () {
 	pop();
 	pop();
 	display();
+	free (head);
+	display();
+	head = NULL;
+	display();
 }  
 
 void push (int x) {
