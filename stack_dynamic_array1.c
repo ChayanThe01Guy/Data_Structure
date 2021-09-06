@@ -44,6 +44,10 @@ int main () {
             }  
             case 4:   
             {  
+		free (stack);
+		display(stack);
+		stack = NULL;
+		display(stack);
                 printf("Exiting....");  
                 break;   
             }  
@@ -53,7 +57,6 @@ int main () {
             }   
         }; 
     }
-    free (stack);
 }
 
 
@@ -66,13 +69,19 @@ void push (int *stack) {
 		printf ("Empty space of stack is %d\n", n - count);
 		printf ("Enter the number of value you want to store\n");
 		scanf("%d",&y);
-		for (int i = 0; i < y; i++) {
+		if (y <= n - count) {
+			for (int i = 0; i < y; i++) {
 			printf("Enter the value of stack %d is\n",i + 1);  
 			scanf("%d",&x);
 			top++;   
 			stack[top] = x;
 			count++;
+			}
 		}
+		else {
+			printf ("You Enter morethan %d\n", n - count);
+		}
+		
     }
 }
 
@@ -84,13 +93,18 @@ void pop (int *stack) {
 		printf("Underflow\n"); 
 	}
     else {
-		printf (" Loaded space of stack is %d\n", count);
+		printf ("Loaded space of stack is %d\n", count);
 		printf ("Enter the number stack you want to delete\n");
 		scanf("%d",&y);
-		for (int i = 0; i < y; i++) {
+		if (y <= count) {
+			for (int i = 0; i < y; i++) {
 			printf("POPPED item is = %d\n", stack[top]);
 			top--;
 			count--;
+			}
+		}
+		else {
+			printf ("You Enter morethan %d\n", count);
 		}
 	}
 	printf("\n");
@@ -98,7 +112,7 @@ void pop (int *stack) {
 
 
 void display(int *stack) {
-	if(top == -1) {  
+	if(top == -1 || stack == NULL) {  
         printf("Stack is empty\n");  
     }
     else {
